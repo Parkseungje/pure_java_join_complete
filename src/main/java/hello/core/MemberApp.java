@@ -4,14 +4,23 @@ import hello.core.member.Grade;
 import hello.core.member.Member;
 import hello.core.member.MemberService;
 import hello.core.member.MemberServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class MemberApp {
 
     //
     public static void main(String[] args) {
+        /*
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
+         */
+
+        ApplicationContext applicationConText = new AnnotationConfigApplicationContext(AppConfig.class);
+        MemberService memberService = applicationConText.getBean("memberService", MemberService.class );
 
         // [1-2와 2-1을 진행하기 위해 선언한것]
-        MemberService memberService = new MemberServiceImpl();
+        //MemberService memberService = new MemberServiceImpl();
 
         // 1-1. 생성자 이용해 회원을 생성하여 member 객체에 담는다.(회원만 생성된것)
         Member member = new Member(1L,"memberA", Grade.VIP); // 생성자의 파라미터에 입력한 정보들이 Member DTO(VO)에 담긴다

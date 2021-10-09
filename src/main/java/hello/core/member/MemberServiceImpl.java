@@ -3,7 +3,12 @@ package hello.core.member;
 // 서비스단
 public class MemberServiceImpl implements MemberService {
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    //private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private MemberRepository memberRepository;
+
+    public MemberServiceImpl(MemberRepository memberRepository){
+        this.memberRepository = memberRepository;
+    }
 
     // 1-3. main에서 생성한 회원객체를 파라미터에 담아 회원을 저장하는, 회원가입 메서드
     public void join(Member member){
