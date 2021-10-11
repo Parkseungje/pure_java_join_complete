@@ -33,6 +33,6 @@ public class OrderApp {
 
         System.out.println("order = " + order);
         System.out.println("order.calculatePrice = " + order.calulatePrice());
-        
+
     }
 }
